@@ -1,19 +1,15 @@
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { createAppContainer } from 'react-navigation';
+import { createStackNavigator } from 'react-navigation-stack';
+import SearchScreen from "./src/screens/SearchScreen"
 
-export default function App() {
-  return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-    </View>
-  );
-}
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
+const navigator = createStackNavigator({
+ // need one screen
+  Search: SearchScreen, // key can be anything we want.
+}, {
+  initialRouteName: 'Search',
+  defaultNavigationOptions: {
+    title: "Business Search"
+  } //can customize header
 });
+
+export default createAppContainer(navigator); // when we start up anything we export from this file is taken by react-native and shown so we need to export a component from this file. so we export navigator using createAppContainer which creates a default component.
